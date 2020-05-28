@@ -17,7 +17,7 @@ public class CommentController implements Callback<CommentFeed>{
     @Override
     public void onResponse(Call<CommentFeed> call, Response<CommentFeed> response) {
         ArrayList<String> results = response.body().returnComments();
-//        System.out.println("results = " + results.toString());
+        System.out.println("Comments url = " + this.url);
     }
 
     @Override

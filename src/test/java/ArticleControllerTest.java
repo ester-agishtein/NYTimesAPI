@@ -1,7 +1,7 @@
 import org.junit.Test;
-import static org.junit.Assert.*;
 import retrofit2.Call;
 import retrofit2.Response;
+import java.util.HashMap;
 import static org.mockito.Mockito.*;
 
 public class ArticleControllerTest {
@@ -11,7 +11,7 @@ public class ArticleControllerTest {
         ArticleService service = mock(ArticleService.class);
         Call<ArticleFeed> call = mock(Call.class);
         doReturn(call).when(service).getArticles();
-        ArticleController controller = new ArticleController(service);
+        ArticleController controller = new ArticleController(service, new HashMap<String,String>());
         controller.getArticleData();
         verify(call).enqueue(controller);
     }
@@ -19,7 +19,7 @@ public class ArticleControllerTest {
     @Test
     public void onResponse() {
         ArticleService service = mock(ArticleService.class);
-        ArticleController controller = new ArticleController(service);
+        ArticleController controller = new ArticleController(service, new HashMap<String,String>());
 
         Call<ArticleFeed> call = mock(Call.class);
         Response<ArticleFeed> response = mock(Response.class);
