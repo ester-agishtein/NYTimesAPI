@@ -10,6 +10,20 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+//https://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies/4894308#4894308
+//then hit gradle on the top right hand side bar and click build, then jar, then run jar
+//jar {
+//    manifest {
+        //where your main is.
+//        attributes "Main-Class": "$mainClassName"
+//    }
+//
+//    from {
+//        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//}
+
+
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
