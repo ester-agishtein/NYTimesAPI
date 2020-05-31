@@ -1,3 +1,5 @@
+package agishtein.NYTimes;
+
 import com.google.gson.annotations.SerializedName;
 import java.util.*;
 public class ArticleFeed {

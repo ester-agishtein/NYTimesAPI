@@ -1,3 +1,4 @@
+package agishtein.NYTimes;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,46 +40,46 @@ public class ArticleController implements Callback<ArticleFeed>{
 
     @Override
     public void onResponse(Call<ArticleFeed> call, Response<ArticleFeed> response) {
-        this.articleUrlMap = response.body().getFiveArticles();
-        HashMap<String,String> titlesAbstracts = new HashMap<>();
-        for(int ix = 0; ix < response.body().results.size(); ix++){
-            titlesAbstracts.put(response.body().results.get(ix).title, response.body().results.get(ix).body);
-        }
-        Iterator hmIterator = articleUrlMap.entrySet().iterator();
-        while (hmIterator.hasNext())
-        {
-            for(int index = 0; index < buttonsArray.size(); index++) {
-                Map.Entry mapElement = (Map.Entry) hmIterator.next();
-                buttonsArray.get(index).setText((String) mapElement.getKey());
-
-                int finalIndex = index;
-                buttonsArray.get(index).addActionListener(action -> {
-                    urlButton.setText((String) mapElement.getValue());
-                    articleName.setText("Article Name: " + (String) mapElement.getKey());
-                    articleSumm.setText("Article Abstract: " + titlesAbstracts.get((String) mapElement.getKey()));
-                });
+        if(response.body() != null) {
+            this.articleUrlMap = response.body().getFiveArticles();
+            HashMap<String, String> titlesAbstracts = new HashMap<>();
+            for (int ix = 0; ix < response.body().results.size(); ix++) {
+                titlesAbstracts.put(response.body().results.get(ix).title, response.body().results.get(ix).body);
             }
-        }
-        viewComments.addActionListener(event->{
-            commentPanel.removeAll();
-            commentPanel.updateUI();
+            Iterator hmIterator = articleUrlMap.entrySet().iterator();
+            while (hmIterator.hasNext()) {
+                for (int index = 0; index < buttonsArray.size(); index++) {
+                    Map.Entry mapElement = (Map.Entry) hmIterator.next();
+                    buttonsArray.get(index).setText((String) mapElement.getKey());
+
+                    int finalIndex = index;
+                    buttonsArray.get(index).addActionListener(action -> {
+                        urlButton.setText((String) mapElement.getValue());
+                        articleName.setText("Article Name: " + (String) mapElement.getKey());
+                        articleSumm.setText("Article Abstract: " + titlesAbstracts.get((String) mapElement.getKey()));
+                    });
+                }
+            }
+            viewComments.addActionListener(event -> {
+                commentPanel.removeAll();
+                commentPanel.updateUI();
                 CommentService commentService = new CommentServiceFactory().getInstance();
-                CommentController commentController = new CommentController(commentService, urlButton.getText(),commentPanel);
+                CommentController commentController = new CommentController(commentService, urlButton.getText(), commentPanel);
                 commentController.getCommentsData();
-        });
+            });
 
-        urlButton.addActionListener(actionEvent -> {
-            System.out.println("clicked");
+            urlButton.addActionListener(actionEvent -> {
+                System.out.println("clicked");
 
-            try {
-                URL url = new URL(urlButton.getText());
-                openWebpage(url);
+                try {
+                    URL url = new URL(urlButton.getText());
+                    openWebpage(url);
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        });
-
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     @Override

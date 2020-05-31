@@ -1,3 +1,5 @@
+package agishtein.NYTimes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -56,12 +58,9 @@ public class Frame extends JFrame{
         add(articles);
         add(articleInfo);
         add(commentPanel);
-
     }
 
     public static void main(String[] args) {
-
-
         new Frame().setVisible(true);
     }
 }

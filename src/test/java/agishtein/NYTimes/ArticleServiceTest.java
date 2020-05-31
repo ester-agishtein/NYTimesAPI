@@ -1,3 +1,8 @@
+package agishtein.NYTimes;
+
+import agishtein.NYTimes.ArticleFeed;
+import agishtein.NYTimes.ArticleService;
+import agishtein.NYTimes.ArticleServiceFactory;
 import org.junit.Test;
 import retrofit2.Response;
 

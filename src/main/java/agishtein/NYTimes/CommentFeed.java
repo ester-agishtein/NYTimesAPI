@@ -1,3 +1,5 @@
+package agishtein.NYTimes;
+
 import java.util.*;
 public class CommentFeed {
 
