@@ -26,7 +26,7 @@ public class CommentController implements Callback<CommentFeed>{
     @Override
     public void onResponse(Call<CommentFeed> call, Response<CommentFeed> response) {
 //        assert response.body() != null;
-        System.out.println("in commment controller: " + response.body().returnComments());
+//        System.out.println("in commment controller: " + response.body().returnComments());
         ArrayList<String> results = response.body().returnComments();
 
         next = new JButton("Next");

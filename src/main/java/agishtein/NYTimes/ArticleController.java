@@ -32,6 +32,7 @@ public class ArticleController implements Callback<ArticleFeed>{
         this.articleSumm = articleSumm;
         this.commentPanel = commentPanel;
         this.viewComments = viewComments;
+
     }
 
     public void getArticleData(){
@@ -40,12 +41,17 @@ public class ArticleController implements Callback<ArticleFeed>{
 
     @Override
     public void onResponse(Call<ArticleFeed> call, Response<ArticleFeed> response) {
+        System.out.println("call = " + call);
+        System.out.println("response = " + response);
+        System.out.println("response.body() "+response.body());
+        if(response.body() == null) System.out.println("null");
+        System.out.println("response.body " + response.body().getFiveArticles());
         if(response.body() != null) {
             this.articleUrlMap = response.body().getFiveArticles();
-            HashMap<String, String> titlesAbstracts = new HashMap<>();
-            for (int ix = 0; ix < response.body().results.size(); ix++) {
-                titlesAbstracts.put(response.body().results.get(ix).title, response.body().results.get(ix).body);
-            }
+
+            HashMap<String, String> titlesAbstracts = response.body().getTitleAbstract();
+
+
             Iterator hmIterator = articleUrlMap.entrySet().iterator();
             while (hmIterator.hasNext()) {
                 for (int index = 0; index < buttonsArray.size(); index++) {

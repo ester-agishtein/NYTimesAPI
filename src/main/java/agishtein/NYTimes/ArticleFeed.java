@@ -4,6 +4,11 @@ import com.google.gson.annotations.SerializedName;
 import java.util.*;
 public class ArticleFeed {
     String status;
+
+    public ArrayList<Results> getResults() {
+        return results;
+    }
+
     @SerializedName("num_results")
     String numResults;
     ArrayList<Results> results;
@@ -30,4 +35,14 @@ public class ArticleFeed {
         }
         return namesUrlMap;
     }
+
+    public HashMap<String, String> getTitleAbstract(){
+        HashMap<String,String> titlesAbstracts = this.getFiveArticles();
+        int topFive = 5;
+        for (int ix = 0; ix < topFive; ix++) {
+            titlesAbstracts.put(results.get(ix).title, results.get(ix).body);
+        }
+        return titlesAbstracts;
+    }
 }
+
