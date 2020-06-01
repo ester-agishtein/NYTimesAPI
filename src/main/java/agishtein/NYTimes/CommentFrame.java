@@ -32,7 +32,6 @@ public class CommentFrame extends JFrame{
         }
 
         next.addActionListener(action -> {
-
             if (index < results.size())
             {
                 index += 1;
