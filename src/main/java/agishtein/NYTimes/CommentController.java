@@ -20,6 +20,7 @@ public class CommentController implements Callback<CommentFeed>{
         this.url = url;
         this.commentPanel = commentPanel;
     }
+
     public void getCommentsData(){
         service.getComments(this.url).enqueue(this);
     }
@@ -32,6 +33,7 @@ public class CommentController implements Callback<CommentFeed>{
         next = new JButton("Next");
         comment = new JLabel("Comment: ");
         prev = new JButton("Previous");
+
         if(results.size() == 0)
         {
             comment.setText("This article has no comments.");

@@ -12,23 +12,29 @@ import static org.junit.Assert.*;
 
 public class ArticleFeedTest {
 
-    @Test
-    public void getFirstArticle() throws IOException {
+    public ArticleFeed setUp() throws IOException {
         ArticleService service = new ArticleServiceFactory().getInstance();
         Response<ArticleFeed> response = service.getArticles().execute();
         assertTrue(response.toString(), response.isSuccessful());
         ArticleFeed feed = response.body();
-        System.out.println("First article: " + feed.getFirstArticle().body);
+        return feed;
+    }
+
+    @Test
+    public void getFirstArticle() throws IOException {
+        ArticleFeed feed = this.setUp();
         assertNotNull(feed.getFirstArticle().body);
     }
 
     @Test
     public void getFiveArticles() throws IOException {
-        ArticleService service = new ArticleServiceFactory().getInstance();
-        Response<ArticleFeed> response = service.getArticles().execute();
-        assertTrue(response.toString(), response.isSuccessful());
-        ArticleFeed feed = response.body();
-//        System.out.println("First article: " + feed.getFiveArticles().toString());
+        ArticleFeed feed = this.setUp();
         assertNotNull(feed.getFiveArticles());
+    }
+
+    @Test
+    public void getTitleAbstract() throws IOException{
+        ArticleFeed feed = this.setUp();
+        assertNotNull(feed.getTitleAbstract());
     }
 }

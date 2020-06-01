@@ -5,9 +5,6 @@ import java.util.*;
 public class ArticleFeed {
     String status;
 
-    public ArrayList<Results> getResults() {
-        return results;
-    }
 
     @SerializedName("num_results")
     String numResults;
