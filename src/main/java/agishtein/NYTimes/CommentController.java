@@ -9,16 +9,11 @@ import java.util.*;
 public class CommentController implements Callback<CommentFeed>{
     private CommentService service;
     private String url;
-    private JPanel commentPanel;
-    private JLabel comment;
-    private JButton next;
-    private JButton prev;
-    int index = 0;
 
-    public CommentController(CommentService service, String url, JPanel commentPanel){
+
+    public CommentController(CommentService service, String url){
         this.service = service;
         this.url = url;
-        this.commentPanel = commentPanel;
     }
 
     public void getCommentsData(){
@@ -26,60 +21,21 @@ public class CommentController implements Callback<CommentFeed>{
     }
     @Override
     public void onResponse(Call<CommentFeed> call, Response<CommentFeed> response) {
-//        assert response.body() != null;
-//        System.out.println("in commment controller: " + response.body().returnComments());
-        ArrayList<String> results = response.body().returnComments();
-
-        next = new JButton("Next");
-        comment = new JLabel("Comment: ");
-        prev = new JButton("Previous");
-
-        if(results.size() == 0)
+        if(response.body() == null)
         {
-            comment.setText("This article has no comments.");
-            commentPanel.add(comment);
+            return;
         }
         else {
-            commentPanel.add(comment);
-            commentPanel.add(next);
+            ArrayList<String> results = response.body().returnComments();
+            new CommentFrame(results).setVisible(true);
+        }
         }
 
-        next.addActionListener(action -> {
 
-            if (index < results.size())
-            {
-                index += 1;
-                comment.setText("Comment: " + results.get(index));
-                this.updateFrame(comment, next, prev);
-            }
-            else {
-                comment.setText("There are no more comments.");
-                commentPanel.add(comment);
-            }
-        });
-
-        prev.addActionListener(action -> {
-            if(index > 0)
-            {
-                index -= 1;
-                comment.setText("Comment: " + results.get(index));
-                this.updateFrame(comment, next, prev);
-            }
-            else {
-                comment.setText("Please hit next to view the comments.");
-                commentPanel.add(comment);
-            }
-        });
-
-        }
-
-    private void updateFrame(JLabel comment, JButton next, JButton prev){
-        commentPanel.add(next);
-        commentPanel.add(comment);
-        commentPanel.add(prev);
-    }
     @Override
     public void onFailure(Call<CommentFeed> call, Throwable t) {
         t.printStackTrace();
     }
 }
+
+

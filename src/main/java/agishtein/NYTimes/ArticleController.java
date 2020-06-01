@@ -21,18 +21,15 @@ public class ArticleController implements Callback<ArticleFeed>{
     private JButton urlButton;
     private JLabel articleName;
     private JLabel articleSumm;
-    private JPanel commentPanel;
     private JButton viewComments;
 
-    public ArticleController(ArticleService service, ArrayList<JButton> buttonsArray, JButton urlButton, JLabel articleName, JLabel articleSumm, JPanel commentPanel, JButton viewComments){
+    public ArticleController(ArticleService service, ArrayList<JButton> buttonsArray, JButton urlButton, JLabel articleName, JLabel articleSumm,  JButton viewComments){
         this.service = service;
         this.buttonsArray = buttonsArray;
         this.urlButton =  urlButton;
         this.articleName = articleName;
         this.articleSumm = articleSumm;
-        this.commentPanel = commentPanel;
         this.viewComments = viewComments;
-
     }
 
     public void getArticleData(){
@@ -67,24 +64,22 @@ public class ArticleController implements Callback<ArticleFeed>{
                 }
             }
             viewComments.addActionListener(event -> {
-                commentPanel.removeAll();
-                commentPanel.updateUI();
                 CommentService commentService = new CommentServiceFactory().getInstance();
-                CommentController commentController = new CommentController(commentService, urlButton.getText(), commentPanel);
+                CommentController commentController = new CommentController(commentService, urlButton.getText());
                 commentController.getCommentsData();
             });
 
             urlButton.addActionListener(actionEvent -> {
-                System.out.println("clicked");
 
-                try {
-                    URL url = new URL(urlButton.getText());
-                    openWebpage(url);
+                    try {
+                        URL url = new URL(urlButton.getText());
+                        openWebpage(url);
 
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
                 }
             });
+
         }
     }
 
