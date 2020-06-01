@@ -16,6 +16,9 @@ and their comments.
 * Executable Jar Files
 * Markdown
 
+The API displays the top five articles with the URL. 
 ![Alt](screenshots/ArticleFrame.png "Main Application Frame")
 
 
+Clicking the View Comments button opens a window with the articles comments. 
+![Alt](screenshots/CommentFrame.png "Main Application Frame - Comments")
