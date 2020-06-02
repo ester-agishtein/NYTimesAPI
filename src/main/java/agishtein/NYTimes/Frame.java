@@ -12,7 +12,7 @@ public class Frame extends JFrame{
     JButton urlButton;
     JButton viewComments;
 
-    public Frame( ) {
+    public Frame( ArticleService articleService) {
         setSize(1000, 400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("NYTimes API");
@@ -35,7 +35,6 @@ public class Frame extends JFrame{
         }
 
         //fill in buttons
-        ArticleService articleService = new ArticleServiceFactory().getInstance();
         ArticleController articleController = new ArticleController(articleService,buttonsArray,urlButton,articleName,articleSumm,  viewComments);
         articleController.getArticleData();
 
@@ -56,7 +55,11 @@ public class Frame extends JFrame{
 
     }
 
-    public static void main(String[] args) {
-        new Frame().setVisible(true);
+    public static void main(String[] args)
+    {
+        ArticleService articleService = new ArticleServiceFactory().getInstance();
+
+
+        new Frame(articleService).setVisible(true);
     }
 }

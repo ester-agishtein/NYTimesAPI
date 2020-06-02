@@ -26,7 +26,7 @@ public class ArticleControllerTest {
         ArticleService service = mock(ArticleService.class);
         Call<ArticleFeed> call = mock(Call.class);
         doReturn(call).when(service).getArticles();
-        ArticleController controller = new ArticleController(service, buttonsArray, urlButton, articleName, articleSumm, commentPanel, viewComments);
+        ArticleController controller = new ArticleController(service, buttonsArray, urlButton, articleName, articleSumm, viewComments);
         controller.getArticleData();
         verify(call).enqueue(controller);
     }
@@ -34,7 +34,7 @@ public class ArticleControllerTest {
     @Test
     public void onResponse() {
         ArticleService service = mock(ArticleService.class);
-        ArticleController controller = new ArticleController(service, buttonsArray, urlButton, articleName, articleSumm, commentPanel, viewComments);
+        ArticleController controller = new ArticleController(service, buttonsArray, urlButton, articleName, articleSumm, viewComments);
         Call<ArticleFeed> call = mock(Call.class);
         Response<ArticleFeed> response = mock(Response.class);
         ArticleFeed feed = mock(ArticleFeed.class);

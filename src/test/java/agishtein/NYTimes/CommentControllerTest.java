@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.*;
 import javax.swing.*;
 public class CommentControllerTest {
-    JPanel panel = mock(JPanel.class);
+
 
     @Test
     public void getCommentsData() {
@@ -24,7 +24,7 @@ public class CommentControllerTest {
         String mockUrl = "https://www.nytimes.com/2020/05/25/us/politics/coronavirus-red-blue-states.html";
         doReturn(call).when(service).getComments(mockUrl);
 
-        CommentController controller = new CommentController(service, mockUrl, panel);
+        CommentController controller = new CommentController(service, mockUrl);
         controller.getCommentsData();
         verify(call).enqueue(controller);
     }
@@ -33,7 +33,7 @@ public class CommentControllerTest {
     public void onResponse() {
         CommentService service = mock(CommentService.class);
         String mockUrl = "https://www.nytimes.com/2020/05/25/us/politics/coronavirus-red-blue-states.html";
-        CommentController controller = new CommentController(service, mockUrl, panel);
+        CommentController controller = new CommentController(service, mockUrl);
 
         Call<CommentFeed> call = mock(Call.class);
         Response<CommentFeed> response = mock(Response.class);
