@@ -7,7 +7,7 @@ import retrofit2.Call;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class FrameTest {
+public class MainFrameTest {
 @Test
     public void getArticles(){
     ArticleService service = mock(ArticleService.class);

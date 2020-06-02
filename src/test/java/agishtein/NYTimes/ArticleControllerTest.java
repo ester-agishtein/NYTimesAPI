@@ -18,7 +18,6 @@ public class ArticleControllerTest {
      JButton urlButton = mock(JButton.class);
      JLabel articleName = mock(JLabel.class);
      JLabel articleSumm = mock(JLabel.class);
-     JPanel commentPanel = mock(JPanel.class);
      JButton viewComments = mock(JButton.class);
 
     @Test

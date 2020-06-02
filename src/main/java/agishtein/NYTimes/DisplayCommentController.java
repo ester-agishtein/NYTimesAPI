@@ -4,24 +4,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.ArrayList;
 
 public class DisplayCommentController implements Callback<CommentFeed>{
-    private JLabel comment;
-    private JButton next;
-    private JButton prev;
     private ArrayList<String> results;
     int index = 0;
 
     public DisplayCommentController(ArrayList<String> results){
         this.results = results;
-        System.out.println("Results in display = " + results.get(0));
     }
-    public void check(){
-        System.out.println("methods");
-    }
+
     @Override
     public void onResponse(Call<CommentFeed> call, Response<CommentFeed> response) {
         return;

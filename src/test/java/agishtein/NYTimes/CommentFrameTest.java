@@ -17,8 +17,9 @@ public class CommentFrameTest {
     public void getComments(){
         CommentService service = mock(CommentService.class);
         Call<CommentFeed> call = mock(Call.class);
+        DisplayCommentController controller = mock(DisplayCommentController.class);
         doReturn(call).when(service).getComments(url);
-        CommentFrame frame = new CommentFrame(results);
+        CommentFrame frame = new CommentFrame(controller);
         verify(service).getComments(url);
     }
 
