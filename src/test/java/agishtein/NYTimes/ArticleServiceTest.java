@@ -19,11 +19,6 @@ public class ArticleServiceTest {
         System.out.println("Article response = " + response);
         assertTrue(response.toString(), response.isSuccessful());
         ArticleFeed feed = response.body();
-//        System.out.println("feed.numRes = " + feed.numResults);
-//        System.out.println("url = " + feed.results.get(0).url);
-//        System.out.println("published = " + feed.results.get(0).publishedDate);
-//        System.out.println("title = " + feed.results.get(0).title);
-//        System.out.println("body = " + feed.results.get(0).body);
         assertNotNull(feed);
         assertNotNull(feed.numResults);
         assertNotNull(feed.results.get(0).url);

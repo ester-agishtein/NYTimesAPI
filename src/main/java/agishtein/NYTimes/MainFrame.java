@@ -3,7 +3,7 @@ package agishtein.NYTimes;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-public class Frame extends JFrame{
+public class MainFrame extends JFrame{
 
     JPanel articles;
     JPanel articleInfo;
@@ -12,7 +12,7 @@ public class Frame extends JFrame{
     JButton urlButton;
     JButton viewComments;
 
-    public Frame( ArticleService articleService) {
+    public MainFrame( ArticleService articleService) {
         setSize(1000, 400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("NYTimes API");
@@ -58,8 +58,6 @@ public class Frame extends JFrame{
     public static void main(String[] args)
     {
         ArticleService articleService = new ArticleServiceFactory().getInstance();
-
-
-        new Frame(articleService).setVisible(true);
+        new MainFrame(articleService).setVisible(true);
     }
 }

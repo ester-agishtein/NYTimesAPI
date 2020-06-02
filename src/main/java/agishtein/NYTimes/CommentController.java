@@ -27,7 +27,8 @@ public class CommentController implements Callback<CommentFeed>{
         }
         else {
             ArrayList<String> results = response.body().returnComments();
-            new CommentFrame(results).setVisible(true);
+            DisplayCommentController controller = new DisplayCommentController(results);
+            new CommentFrame(controller).setVisible(true);
         }
         }
 

@@ -13,8 +13,7 @@ public class FrameTest {
     ArticleService service = mock(ArticleService.class);
     Call<ArticleFeed> call = mock(Call.class);
     doReturn(call).when(service).getArticles();
-    Frame frame = new Frame(service);
-    doReturn(call).when(service).getArticles();
+    MainFrame frame = new MainFrame(service);
     verify(service).getArticles();
 }
 }

@@ -15,7 +15,7 @@ repositories {
 jar {
     manifest {
 
-        attributes "Main-Class": "agishtein.NYTimes.Frame"
+        attributes "Main-Class": "agishtein.NYTimes.MainFrame"
     }
 
     from {

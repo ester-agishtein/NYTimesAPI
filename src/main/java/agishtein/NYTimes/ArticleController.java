@@ -45,10 +45,7 @@ public class ArticleController implements Callback<ArticleFeed>{
         System.out.println("response.body " + response.body().getFiveArticles());
         if(response.body() != null) {
             this.articleUrlMap = response.body().getFiveArticles();
-
             HashMap<String, String> titlesAbstracts = response.body().getTitleAbstract();
-
-
             Iterator hmIterator = articleUrlMap.entrySet().iterator();
             while (hmIterator.hasNext()) {
                 for (int index = 0; index < buttonsArray.size(); index++) {
@@ -64,6 +61,7 @@ public class ArticleController implements Callback<ArticleFeed>{
                 }
             }
             viewComments.addActionListener(event -> {
+
                 CommentService commentService = new CommentServiceFactory().getInstance();
                 CommentController commentController = new CommentController(commentService, urlButton.getText());
                 commentController.getCommentsData();
