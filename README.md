@@ -4,7 +4,8 @@ This project uses two [New York Times APIs](https://developer.nytimes.com/apis) 
 and their comments. 
 
 This project includes a [downloadable jar file](build/libs/FinalProject-1.0-SNAPSHOT.jar). 
-**Technologies**
+
+<ins>**Technologies**</ins>
 <br/>
 * APIs
 * JSON
