@@ -15,6 +15,7 @@ public class DisplayCommentController implements Callback<CommentFeed>{
         this.results = results;
     }
 
+    public void testCheck(){return;}
     @Override
     public void onResponse(Call<CommentFeed> call, Response<CommentFeed> response) {
         return;

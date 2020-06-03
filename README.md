@@ -3,6 +3,7 @@
 This project uses two [New York Times APIs](https://developer.nytimes.com/apis) to return the top five most viewed articles
 and their comments. 
 
+This project includes a [downloadable jar file](build/libs/FinalProject-1.0-SNAPSHOT.jar). 
 **Technologies**
 <br/>
 * APIs
