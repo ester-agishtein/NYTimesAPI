@@ -1,13 +1,10 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
-import agishtein.NYTimes.ArticleController;
-import agishtein.NYTimes.ArticleFeed;
-import agishtein.NYTimes.ArticleService;
 import org.junit.Test;
 
 import retrofit2.Call;
 import retrofit2.Response;
-
+import static org.junit.Assert.*;
 import javax.swing.*;
 import java.util.*;
 import static org.mockito.Mockito.*;
@@ -41,7 +38,6 @@ public class ArticleControllerTest {
         doReturn(hmap).when(feed).getFiveArticles();
         doReturn(feed).when(response).body();
         controller.onResponse(call,response);
-
+        assertNotNull(hmap);
     }
-
 }

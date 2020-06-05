@@ -1,8 +1,5 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
-import agishtein.NYTimes.CommentFeed;
-import agishtein.NYTimes.CommentService;
-import agishtein.NYTimes.CommentServiceFactory;
 import org.junit.Test;
 import retrofit2.Response;
 

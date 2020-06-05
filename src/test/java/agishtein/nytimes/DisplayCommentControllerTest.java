@@ -1,4 +1,4 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
 import org.junit.Test;
 import retrofit2.Call;
@@ -6,7 +6,6 @@ import retrofit2.Response;
 
 import javax.swing.*;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import java.util.*;
 public class DisplayCommentControllerTest {

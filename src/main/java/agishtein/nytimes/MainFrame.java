@@ -1,4 +1,4 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +29,7 @@ public class MainFrame extends JFrame{
 
         viewComments = new JButton("Click to view comments: ");
         //create buttons array
-        for(int index = 0; index<5; index++){
+        for(int index = 0; index < 5; index++){
             JButton button = new JButton();
             buttonsArray.add(button);
         }
@@ -39,9 +39,9 @@ public class MainFrame extends JFrame{
         articleController.getArticleData();
 
         //display buttons in frame
-        for(int index = 0; index < buttonsArray.size(); index++)
+        for(JButton button : buttonsArray)
         {
-            articles.add(buttonsArray.get(index));
+            articles.add(button);
         }
 
         //display article data

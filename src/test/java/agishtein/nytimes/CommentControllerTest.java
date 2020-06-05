@@ -1,18 +1,13 @@
-package agishtein.NYTimes;
-
-import agishtein.NYTimes.CommentController;
-import agishtein.NYTimes.CommentFeed;
-import agishtein.NYTimes.CommentService;
+package agishtein.nytimes;
 
 import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Response;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
-import javax.swing.*;
+import static org.junit.Assert.*;
 public class CommentControllerTest {
 
 
@@ -21,10 +16,10 @@ public class CommentControllerTest {
 
         CommentService service = mock(CommentService.class);
         Call<CommentFeed> call = mock(Call.class);
-        String mockUrl = "https://www.nytimes.com/2020/05/25/us/politics/coronavirus-red-blue-states.html";
-        doReturn(call).when(service).getComments(mockUrl);
+        String url = "https://www.nytimes.com/2020/05/25/us/politics/coronavirus-red-blue-states.html";
+        doReturn(call).when(service).getComments(url);
 
-        CommentController controller = new CommentController(service, mockUrl);
+        CommentController controller = new CommentController(service, url);
         controller.getCommentsData();
         verify(call).enqueue(controller);
     }
@@ -32,8 +27,8 @@ public class CommentControllerTest {
     @Test
     public void onResponse() {
         CommentService service = mock(CommentService.class);
-        String mockUrl = "https://www.nytimes.com/2020/05/25/us/politics/coronavirus-red-blue-states.html";
-        CommentController controller = new CommentController(service, mockUrl);
+        String url = "https://www.nytimes.com/2020/05/25/us/politics/coronavirus-red-blue-states.html";
+        CommentController controller = new CommentController(service, url);
 
         Call<CommentFeed> call = mock(Call.class);
         Response<CommentFeed> response = mock(Response.class);
@@ -43,6 +38,7 @@ public class CommentControllerTest {
         doReturn(comments).when(feed).returnComments();
         doReturn(feed).when(response).body();
         controller.onResponse(call,response);
+        assertNotNull(comments);
 
     }
 }

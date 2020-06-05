@@ -1,4 +1,4 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,22 +38,16 @@ public class ArticleController implements Callback<ArticleFeed>{
 
     @Override
     public void onResponse(Call<ArticleFeed> call, Response<ArticleFeed> response) {
-        System.out.println("call = " + call);
-        System.out.println("response = " + response);
-        System.out.println("response.body() "+response.body());
         if(response.body() == null) System.out.println("null");
-        System.out.println("response.body " + response.body().getFiveArticles());
         if(response.body() != null) {
             this.articleUrlMap = response.body().getFiveArticles();
             HashMap<String, String> titlesAbstracts = response.body().getTitleAbstract();
             Iterator hmIterator = articleUrlMap.entrySet().iterator();
             while (hmIterator.hasNext()) {
-                for (int index = 0; index < buttonsArray.size(); index++) {
+                for(JButton button: buttonsArray) {
                     Map.Entry mapElement = (Map.Entry) hmIterator.next();
-                    buttonsArray.get(index).setText((String) mapElement.getKey());
-
-                    int finalIndex = index;
-                    buttonsArray.get(index).addActionListener(action -> {
+                    button.setText((String) mapElement.getKey());
+                        button.addActionListener(action -> {
                         urlButton.setText((String) mapElement.getValue());
                         articleName.setText("Article Name: " + (String) mapElement.getKey());
                         articleSumm.setText("Article Abstract: " + titlesAbstracts.get((String) mapElement.getKey()));
@@ -88,7 +82,6 @@ public class ArticleController implements Callback<ArticleFeed>{
     }
 
     public static boolean openWebpage(URI uri) {
-//        System.out.println("uri = " + uri);
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
             try {

@@ -1,7 +1,7 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+
 public class CommentFrame extends JFrame{
     private JLabel comment;
     private JButton next;
@@ -16,10 +16,13 @@ public class CommentFrame extends JFrame{
         comment = new JLabel();
         next = new JButton("Next >");
         prev = new JButton("< Previous");
-        controller.setComment(comment,next,prev);
+        this.setController(controller, comment, next, prev);
         add(prev);
         add(comment);
         add(next);
 
+    }
+    public void setController(DisplayCommentController controller, JLabel comment, JButton next, JButton prev ){
+        controller.setComment(comment,next,prev);
     }
 }

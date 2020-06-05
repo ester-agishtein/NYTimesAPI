@@ -1,4 +1,4 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
 import retrofit2.Call;
 import retrofit2.http.*;

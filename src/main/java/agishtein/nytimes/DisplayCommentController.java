@@ -1,10 +1,9 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class DisplayCommentController implements Callback<CommentFeed>{
@@ -14,8 +13,11 @@ public class DisplayCommentController implements Callback<CommentFeed>{
     public DisplayCommentController(ArrayList<String> results){
         this.results = results;
     }
+    //this getter is used for testing purposes only.
+    public ArrayList<String> getResults(ArrayList<String> results){
+        return this.results;
+    }
 
-    public void testCheck(){return;}
     @Override
     public void onResponse(Call<CommentFeed> call, Response<CommentFeed> response) {
         return;
@@ -35,7 +37,7 @@ public class DisplayCommentController implements Callback<CommentFeed>{
 
         next.addActionListener(action -> {
             if (index < results.size()) {
-                index += 1;
+                index ++;
                 String commentString = "<html><p>" + results.get(index) + "</p></html>";
                 comment.setText(commentString);
             } else {
@@ -45,7 +47,7 @@ public class DisplayCommentController implements Callback<CommentFeed>{
 
         prev.addActionListener(action -> {
             if (index > 0) {
-                index -= 1;
+                index --;
                 String commentString = "<html><p>" + results.get(index) + "</p></html>";
                 comment.setText(commentString);
 

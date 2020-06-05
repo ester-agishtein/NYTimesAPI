@@ -1,14 +1,10 @@
-package agishtein.NYTimes;
+package agishtein.nytimes;
 
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import retrofit2.Call;
-import retrofit2.Response;
 
 import javax.swing.*;
-import javax.xml.stream.events.Comment;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import java.util.*;
@@ -17,13 +13,15 @@ public class CommentFrameTest {
     ArrayList<String> results = new ArrayList<>();
     @Test
     public void getComments(){
-        //this test dose not work.
+        //Ensures the results array is passed to the displayCommentController
         CommentService service = mock(CommentService.class);
         Call<CommentFeed> call = mock(Call.class);
         doReturn(call).when(service).getComments(url);
-        DisplayCommentController controller = mock(DisplayCommentController.class);
-        CommentFrame frame = new CommentFrame(controller);
-//        verify(controller).testCheck();
+        CommentController controller = mock(CommentController.class);
+        DisplayCommentController displayCommentController = new DisplayCommentController(results);
+        CommentFrame frame = new CommentFrame(displayCommentController);
+        frame.setController(displayCommentController, new JLabel(), new JButton(), new JButton());
+        assertNotNull(displayCommentController.getResults(results));
     }
 
 }
